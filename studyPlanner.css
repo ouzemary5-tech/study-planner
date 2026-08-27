@@ -165,8 +165,341 @@ font-size:medium;
     text-align: center;
 
 }
+#message {
+    display: none;
+    background-color: #ffe4f4;
+    color: #d11a8d;
+    border: 2px solid #f30cae;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 10px auto;
+    width: 220px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    animation: messagePop 0.3s ease;
+}
+
+@keyframes messagePop {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+.task-time {
+    display: inline-block;
+    background-color: #ffe4f4;
+    color: #d11a8d;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.planner-layout {
+    display: grid;
+    grid-template-columns: 220px minmax(400px, 650px) 220px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+}
+.countdown {
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgb(209, 7, 149);
+    border-radius: 20px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.countdown h2 {
+    color: #fc07b2;
+    margin-top: 0;
+}
+
+#countdown-display {
+    background: #ffe4f4;
+    color: #d11a8d;
+    border-radius: 15px;
+    padding: 15px 5px;
+    margin: 15px 0;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.countdown-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.countdown-inputs input {
+    width: 45px;
+    padding: 7px 2px;
+    text-align: center;
+}
+
+#start-timer,
+#reset-timer {
+    margin-top: 10px;
+}
+#calendar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.month {
+    background-color: #ffe4f4;
+    color: #d11a8d;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.month h3 {
+    margin: 5px;
+}
+
+#calendar-content {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+}
 
 
+.month {
+    background-color: #ffe4f4;
+
+    color: #d11a8d;
+
+    padding: 8px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+
+.month h3 {
+    margin: 5px 0 10px;
+
+    color: #d11a8d;
+
+    text-align: center;
+}
+
+
+.week,
+.days {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 3px;
+
+    text-align: center;
+}
+
+
+.week span {
+    font-size: 8px;
+
+    font-weight: bold;
+
+    color: #a71970;
+}
+
+
+.day {
+    font-size: 10px;
+
+    padding: 4px 0;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.day:hover {
+    background-color: #f7a8d5;
+
+    color: white;
+
+    transform: scale(1.1);
+}
+#calendar-content {
+    width: 100%;
+}
+
+
+.calendar-navigation {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 5px;
+
+    margin-bottom: 10px;
+}
+
+
+.calendar-navigation h3 {
+    margin: 0;
+
+    color: #d11a8d;
+
+    font-size: 16px;
+}
+
+
+.calendar-navigation button {
+    width: 30px;
+
+    height: 30px;
+
+    padding: 0;
+
+    margin: 0;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+    line-height: 30px;
+}
+
+
+.week,
+.days {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 3px;
+
+    text-align: center;
+}
+
+
+.week span {
+    font-size: 8px;
+
+    font-weight: bold;
+
+    color: #a71970;
+}
+
+
+.day {
+    font-size: 11px;
+
+    padding: 5px 0;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.day:hover {
+    background-color: #f7a8d5;
+
+    color: white;
+
+    transform: scale(1.1);
+}.year-navigation,
+.month-navigation {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+}
+
+
+.year-navigation h3,
+.month-navigation h3 {
+    margin: 0;
+
+    color: #d11a8d;
+}
+
+
+.year-navigation button,
+.month-navigation button {
+    width: 28px;
+
+    height: 28px;
+
+    padding: 0;
+
+    margin: 0;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+}
+
+
+.week,
+.days {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 3px;
+
+    text-align: center;
+}
+
+
+.week span {
+    font-size: 8px;
+
+    font-weight: bold;
+
+    color: #a71970;
+}
+
+
+.day {
+    font-size: 11px;
+
+    padding: 5px 0;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.day:hover {
+    background-color: #f7a8d5;
+
+    color: white;
+
+    transform: scale(1.1);
+}
 
 
 

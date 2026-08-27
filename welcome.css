@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #f8b4d9,
+        #d98ad1,
+        #c77dca
+    );
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: white;
+}
+
+
+/* الصفحة */
+
+.welcome {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* البطاقة */
+
+.welcome-card {
+
+    width: min(500px, 90%);
+
+    padding: 50px 35px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    border: 2px solid rgba(255, 255, 255, 0.5);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.2);
+
+    backdrop-filter: blur(10px);
+
+    animation: appear 1s ease;
+
+}
+
+
+/* الزهرة */
+
+.flower {
+
+    font-size: 55px;
+
+    animation: floating 2s ease-in-out infinite;
+
+}
+
+
+/* العنوان */
+
+.welcome-card h1 {
+
+    margin: 10px 0;
+
+    color: #fff;
+
+    font-size: 42px;
+
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.5);
+
+}
+
+
+.welcome-card h2 {
+
+    margin: 0;
+
+    color: #fc07b2;
+
+    font-size: 28px;
+
+}
+
+
+/* النص */
+
+.welcome-card p {
+
+    margin: 25px auto;
+
+    max-width: 350px;
+
+    line-height: 1.8;
+
+    font-size: 18px;
+
+    color: white;
+
+}
+
+
+/* الزر */
+
+#start {
+
+    background-color: #d10795;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 15px;
+
+    padding: 12px 25px;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+#start:hover {
+
+    background-color: #db2777;
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2);
+
+}
+
+
+/* حركة البطاقة */
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* حركة الزهرة */
+
+@keyframes floating {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-8px);
+
+    }
+
+}
