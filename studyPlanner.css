@@ -41,6 +41,45 @@ cursor: pointer;
 
 
 }
+.digital-clock {
+    text-align: center;
+margin-top: 25px;
+
+
+
+
+}
+#clock{
+    font-size: 32px;
+    font-weight: 16px;
+}
+.task-reminder{
+width: 300px;
+margin: 20px auto;
+padding: 20px;
+text-align: center;
+border-radius: 20px;
+
+}
+.task-reminder input{
+
+display: block;
+width: 90%;
+margin: 10px auto;
+padding: 10px;
+
+}
+.task-reminder button{
+
+padding: 10px 20px;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+}
+#reminder-message{
+font-weight: bold;
+
+}
 
 label{
 
@@ -502,6 +541,990 @@ font-size:medium;
 }
 
 
+/* =====================================
+   📅⏳ التقويم والعداد
+===================================== */
+
+.calendar,
+.countdown {
+    width: 250px;
+    height: 420px;
+
+    box-sizing: border-box;
+
+    border: 2px solid rgba(209, 7, 149, 0.45);
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    background: rgba(255, 190, 230, 0.25);
+
+    box-shadow: 0 8px 25px rgba(209, 7, 149, 0.15);
+
+    color: #d10795;
+}
+
+
+/* =====================================
+   📅 التقويم
+===================================== */
+
+.calendar {
+    overflow-y: auto;
+}
+
+.calendar h2 {
+    color: #d10795;
+
+    margin-top: 0;
+
+    text-decoration: underline;
+}
+
+
+/* محتوى التقويم */
+
+#calendar-content {
+    color: #d10795;
+}
+
+
+/* أسماء الأشهر */
+
+#calendar-content .month h3 {
+    color: #d10795;
+}
+
+
+/* =====================================
+   ⏳ العداد
+===================================== */
+
+.countdown {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.countdown h2 {
+    color: #d10795;
+
+    text-decoration: underline;
+
+    margin-top: 0;
+}
+
+
+/* أرقام العداد */
+
+#countdown-display {
+    color: #d10795;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    margin: 20px 0;
+}
+
+
+/* خانات الساعات والدقائق والثواني */
+
+.countdown-inputs {
+    display: flex;
+
+    gap: 5px;
+
+    justify-content: center;
+}
+
+
+.countdown-inputs input {
+    width: 55px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #f3a6d5;
+
+    border-radius: 8px;
+
+    padding: 7px;
+
+    text-align: center;
+
+    color: #d10795;
+
+    background: rgba(255, 255, 255, 0.7);
+}
+
+
+/* أزرار العداد */
+
+.countdown button {
+    background-color: #d10795;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 7px 14px;
+
+    cursor: pointer;
+
+    margin-top: 8px;
+
+    transition: 0.2s ease;
+}
+
+
+.countdown button:hover {
+    background-color: #db2777;
+
+    transform: scale(1.05);
+}
+/* =========================
+   🧸 الدبدوب الكيوت
+========================= */
+
+.cute-bear {
+    position: relative;
+
+    width: 130px;
+
+    height: 180px;
+
+    margin: 20px auto;
+
+    animation: bearFloat 3s ease-in-out infinite;
+}
+
+
+/* الرأس */
+
+.bear-head {
+    position: absolute;
+
+    width: 100px;
+
+    height: 90px;
+
+    background: #fff;
+
+    border: 3px solid #f3a6d5;
+
+    border-radius: 50%;
+
+    left: 15px;
+
+    top: 20px;
+
+    z-index: 2;
+
+    box-shadow: 0 5px 15px rgba(209, 7, 149, 0.15);
+}
+
+
+/* الأذنين */
+
+.bear-ear {
+    position: absolute;
+
+    width: 38px;
+
+    height: 38px;
+
+    background: #fff;
+
+    border: 3px solid #f3a6d5;
+
+    border-radius: 50%;
+
+    top: 10px;
+
+    z-index: 1;
+}
+
+.bear-ear.left {
+    left: 8px;
+}
+
+.bear-ear.right {
+    right: 8px;
+}
+
+
+/* العينين */
+
+.eye {
+    position: absolute;
+
+    width: 8px;
+
+    height: 8px;
+
+    background: #333;
+
+    border-radius: 50%;
+
+    top: 35px;
+}
+
+.left-eye {
+    left: 27px;
+}
+
+.right-eye {
+    right: 27px;
+}
+
+
+/* الأنف */
+
+.nose {
+    position: absolute;
+
+    width: 14px;
+
+    height: 10px;
+
+    background: #e58abd;
+
+    border-radius: 50%;
+
+    left: 40px;
+
+    top: 52px;
+}
+
+
+/* الفم */
+
+.mouth {
+    position: absolute;
+
+    width: 15px;
+
+    height: 8px;
+
+    border-bottom: 2px solid #d10795;
+
+    border-radius: 50%;
+
+    left: 43px;
+
+    top: 62px;
+}
+
+
+/* الجسم */
+
+.bear-body {
+    position: absolute;
+
+    width: 75px;
+
+    height: 75px;
+
+    background: #fff;
+
+    border: 3px solid #f3a6d5;
+
+    border-radius: 45%;
+
+    left: 28px;
+
+    top: 100px;
+
+    box-shadow: 0 5px 15px rgba(209, 7, 149, 0.15);
+}
+
+
+/* اليدين */
+
+.bear-arm {
+    position: absolute;
+
+    width: 25px;
+
+    height: 55px;
+
+    background: #fff;
+
+    border: 3px solid #f3a6d5;
+
+    border-radius: 50%;
+
+    top: 105px;
+
+    z-index: 3;
+}
+
+.left-arm {
+    left: 8px;
+
+    transform: rotate(25deg);
+}
+
+.right-arm {
+    right: 8px;
+
+    transform: rotate(-25deg);
+}
+
+
+/* الرجلين */
+
+.bear-leg {
+    position: absolute;
+
+    width: 30px;
+
+    height: 40px;
+
+    background: #fff;
+
+    border: 3px solid #f3a6d5;
+
+    border-radius: 50%;
+
+    top: 150px;
+
+    z-index: 3;
+}
+
+.left-leg {
+    left: 28px;
+}
+
+.right-leg {
+    right: 28px;
+}
+
+
+/* حركة الدبدوب */
+
+@keyframes bearFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+/* 💬 رسالة الدبدوب */
+
+.bear-message {
+    position: absolute;
+
+    top: -45px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: white;
+
+    color: #d10795;
+
+    padding: 7px 12px;
+
+    border-radius: 15px;
+
+    border: 2px solid #f3a6d5;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s ease;
+
+    box-shadow: 0 4px 12px rgba(209, 7, 149, 0.2);
+}
+
+
+/* لما نضغط عليه */
+
+.cute-bear.clicked {
+    animation: bearJump 0.5s ease;
+}
+
+
+.cute-bear.show-message .bear-message {
+    opacity: 1;
+
+    top: -50px;
+}
+
+
+/* حركة القفزة */
+
+@keyframes bearJump {
+
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    30% {
+        transform: translateY(-18px) rotate(-5deg);
+    }
+
+    60% {
+        transform: translateY(0) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+}
+
+.day.today {
+    position: relative;
+    border: 2px solid #ff8fb3;
+    background: #fff0f5;
+    border-radius: 15px;
+    font-weight: bold;
+
+    color: #d10795;
+
+    z-index: 1;
+}
+
+.day.today::before {
+    content: "♥";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 28px;
+
+    color: #ffc1d6;
+
+    opacity: 0.45;
+
+    z-index: -1;
+}
+.digital-clock{
+
+    text-align: center;
+margin-top: 25px;
+
+}
+
+#clock{
+font-size: 32px;
+font-weight: bold;
+
+
+}
+#today-date{
+    margin-top: 5px;
+    font-size: 16px;
+}
+.task-reminder{
+width: 300px;
+margin: 20px auto;
+padding: 20px;
+text-align: center;
+border-radius: 20px;
+
+
+}
+
+.task-reminder input{
+display: block;
+width: 90%;
+margin: 10px auto;
+padding: 10px;
 
 
 
+
+}
+.task-reminder button {
+    padding: 10px 20px;
+border: none;
+border-
+/* }
+/* ==============================
+   إصلاح أرقام التقويم
+============================== */
+
+.days {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 4px !important;
+}
+
+.days .day {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    color: #d10795 !important;
+
+    min-height: 28px;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px !important;
+    font-weight: bold;
+
+    position: relative;
+    z-index: 5;
+}
+
+
+/* اليوم الحالي فقط */
+.days .day.today {
+    border: 2px solid #ff8fb3;
+    background: #fff0f5;
+
+    border-radius: 50%;
+}
+
+
+/* نوقف القلب مؤقتًا حتى نتأكد أن الأرقام رجعت */
+.days .day.today::before {
+    display: none !important;
+}
+/* =========================================
+   RESPONSIVE + CUTE SCROLL
+========================================= */
+
+/* منع خروج أي عنصر خارج الشاشة */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   الـ Planner
+========================================= */
+
+.planner-layout {
+    width: min(1400px, 94%);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns:
+        minmax(220px, 1fr)
+        minmax(400px, 2fr)
+        minmax(220px, 1fr);
+
+    gap: 20px;
+
+    align-items: start;
+}
+
+
+/* منع العناصر من دفع الصفحة */
+.planner-layout > *,
+.planner-center,
+.calendar,
+.countdown,
+.add-task,
+#card {
+    min-width: 0;
+    max-width: 100%;
+}
+
+
+/* الصور والعناصر الكبيرة */
+img {
+    max-width: 100%;
+}
+
+
+/* الحقول */
+input,
+button {
+    max-width: 100%;
+}
+
+
+/* =========================================
+   الكمبيوتر المتوسط
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .planner-layout {
+        grid-template-columns:
+            minmax(190px, 1fr)
+            minmax(350px, 1.7fr)
+            minmax(190px, 1fr);
+
+        gap: 15px;
+    }
+
+    .planner-center {
+        width: 100%;
+    }
+
+    .inputs {
+        flex-wrap: wrap;
+    }
+
+}
+
+
+/* =========================================
+   التابلت
+========================================= */
+
+@media (max-width: 850px) {
+
+    .planner-layout {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 18px;
+    }
+
+
+    /* الوسط يأخذ السطر كامل */
+    .planner-center {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+
+    .calendar {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+
+    .countdown {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+
+    .inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+
+    .inputs > div:last-child {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================
+   الهاتف
+========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px 0;
+    }
+
+
+    .planner-layout {
+        width: 94%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+
+    /* كل جزء يأخذ العرض كامل */
+    .planner-center,
+    .calendar,
+    .countdown {
+        width: 100%;
+    }
+
+
+    /* ترتيب الصفحة */
+    .planner-center {
+        order: 1;
+    }
+
+    .calendar {
+        order: 2;
+    }
+
+    .countdown {
+        order: 3;
+    }
+
+
+    /* العنوان */
+    #hello {
+        font-size: clamp(20px, 7vw, 30px);
+        line-height: 1.4;
+    }
+
+
+    .planner-center > p {
+        font-size: 14px;
+    }
+
+
+    /* الخانات */
+    .inputs {
+        display: flex;
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .inputs > div {
+        width: 100%;
+    }
+
+
+    .inputs input {
+        width: 100%;
+    }
+
+
+    /* التذكير */
+    .task-reminder {
+        width: 100%;
+    }
+
+
+    .task-reminder input,
+    .task-reminder button {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+
+    /* بطاقات المهام */
+    #card {
+        width: 100%;
+    }
+
+
+    .task-card {
+        width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* التقويم */
+    .calendar {
+        overflow: hidden;
+    }
+
+
+    #calendar-content {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+    }
+
+
+    .week,
+    .days {
+        min-width: 320px;
+    }
+
+
+    /* العداد */
+    .countdown {
+        width: 100%;
+    }
+
+
+    .countdown-inputs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 8px;
+    }
+
+
+    .countdown-inputs input {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    /* الساعة */
+    #clock {
+        font-size: clamp(28px, 10vw, 45px);
+    }
+
+
+    #today-date {
+        font-size: 13px;
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================
+   هاتف صغير جدًا
+========================================= */
+
+@media (max-width: 380px) {
+
+    .planner-layout {
+        width: 96%;
+    }
+
+
+    #hello {
+        font-size: 20px;
+    }
+
+
+    .calendar,
+    .countdown,
+    .add-task {
+        padding: 12px;
+    }
+
+
+    .week,
+    .days {
+        min-width: 290px;
+    }
+
+
+    .day {
+        font-size: 11px;
+    }
+
+
+    .countdown-inputs {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================
+   CUTE SCROLL 🌸
+========================================= */
+
+/* Chrome / Edge / Safari */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff0f6;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        #f6b6d0,
+        #d9a7e8
+    );
+
+    border-radius: 20px;
+
+    border: 2px solid #fff0f6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        180deg,
+        #ed9fbe,
+        #c991dc
+    );
+}
+
+
+/* Firefox */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #e2a9c5 #fff0f6;
+}
+
+
+/* =========================================
+   سكرول أفقي ناعم
+========================================= */
+
+#calendar-content {
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================
+   منع تكسر الكلمات الطويلة
+========================================= */
+
+h1,
+h2,
+h3,
+p,
+span,
+button,
+label {
+    overflow-wrap: break-word;
+}
+
+
+/* =========================================
+   تحسين اللمس في الهاتف
+========================================= */
+
+@media (max-width: 600px) {
+
+    button,
+    input {
+        min-height: 42px;
+    }
+
+    button {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+}

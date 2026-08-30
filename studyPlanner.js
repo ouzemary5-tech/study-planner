@@ -52,7 +52,7 @@ addButton.addEventListener("click", function () {
     // التأكد من المادة
     if (subject === "") {
 
-        showMessage("📚 وين المادة؟ ما نخليوهاش تهرب 😭💗");
+        showMessage("📚 أين المادة؟، يجب علينا تحديدها أولا 😭💗");
 
         return;
     }
@@ -122,6 +122,9 @@ addButton.addEventListener("click", function () {
 // ================================
 // العداد التنازلي
 // ================================
+// ================================
+// العداد التنازلي
+// ================================
 
 const countdownDisplay = document.querySelector("#countdown-display");
 
@@ -140,12 +143,79 @@ let timer;
 let totalSeconds = 0;
 
 
+// ================================
+// تجهيز الصوت
+// ================================
+
+let audioContext = null;
+
+let oscillator = null;
+
+let gainNode = null;
+
+
+function prepareAlarm() {
+
+    audioContext = new AudioContext();
+
+    oscillator = audioContext.createOscillator();
+
+    gainNode = audioContext.createGain();
+
+
+    oscillator.connect(gainNode);
+
+    gainNode.connect(audioContext.destination);
+
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.value = 800;
+
+    gainNode.gain.value = 0;
+
+
+    oscillator.start();
+
+}
+
+
+// ================================
+// تشغيل التنبيه
+// ================================
+
+function playAlarm() {
+
+    if (!audioContext || !gainNode) {
+
+        return;
+
+    }
+
+
+    gainNode.gain.value = 0.3;
+
+
+    setTimeout(function () {
+
+        gainNode.gain.value = 0;
+
+    }, 1000);
+
+}
+
+
+// ================================
 // تحديث شكل العداد
+// ================================
+
 function updateCountdown() {
 
     const hours = Math.floor(totalSeconds / 3600);
 
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const minutes = Math.floor(
+        (totalSeconds % 3600) / 60
+    );
 
     const seconds = totalSeconds % 60;
 
@@ -157,7 +227,10 @@ function updateCountdown() {
 }
 
 
-// زر بدء العداد
+// ================================
+// تشغيل العداد
+// ================================
+
 startTimer.addEventListener("click", function () {
 
     const hours = Number(hoursInput.value) || 0;
@@ -173,6 +246,25 @@ startTimer.addEventListener("click", function () {
         seconds;
 
 
+    // إذا ما دخل المستخدم وقت
+    if (totalSeconds <= 0) {
+
+        showMessage("⏰ حددي وقت العداد أولًا يا روحي 🌷");
+
+        return;
+
+    }
+
+
+    // تجهيز الصوت بعد ضغط المستخدم
+    if (!audioContext) {
+
+        prepareAlarm();
+
+    }
+
+
+    // إيقاف أي عداد قديم
     clearInterval(timer);
 
 
@@ -181,26 +273,35 @@ startTimer.addEventListener("click", function () {
 
     timer = setInterval(function () {
 
+        totalSeconds--;
+
+
+        updateCountdown();
+
+
         if (totalSeconds <= 0) {
 
             clearInterval(timer);
 
-            showMessage("🎉 انتهى الوقت! أحسنتِ يا روحي 💗");
 
-            return;
+            playAlarm();
+
+
+            showMessage(
+                "🎉 انتهى الوقت! أحسنتِ يا روحي 💗"
+            );
+
         }
-
-
-        totalSeconds--;
-
-        updateCountdown();
 
     }, 1000);
 
 });
 
 
-// زر إعادة العداد
+// ================================
+// إعادة ضبط العداد
+// ================================
+
 resetTimer.addEventListener("click", function () {
 
     clearInterval(timer);
@@ -208,6 +309,7 @@ resetTimer.addEventListener("click", function () {
     totalSeconds = 0;
 
     updateCountdown();
+
 
     hoursInput.value = "";
 
@@ -227,12 +329,14 @@ resetTimer.addEventListener("click", function () {
 // التقويم
 // ================================
 
+// ================================
+// التقويم
+// ================================
+
 const calendar = document.querySelector("#calendar-content");
 
 let displayedYear = new Date().getFullYear();
-
 let displayedMonth = new Date().getMonth();
-
 
 const months = [
     "يناير",
@@ -249,81 +353,70 @@ const months = [
     "ديسمبر"
 ];
 
-
 const days = [
-    "أحد",
-    "اثنين",
-    "ثلاثاء",
-    "أربعاء",
-    "خميس",
-    "جمعة",
-    "سبت"
+    "الأحد",
+    "الإثنين",
+    "الثلاثاء",
+    "الأربعاء",
+    "الخميس",
+    "الجمعة",
+    "السبت"
 ];
 
 
 // ================================
-// أزرار السنة
+// إنشاء أزرار السنة
 // ================================
 
 const yearNavigation = document.createElement("div");
 
-yearNavigation.classList.add("year-navigation");
-
+yearNavigation.className = "year-navigation";
 
 const previousYear = document.createElement("button");
-
 previousYear.textContent = "‹";
-
 
 const yearTitle = document.createElement("h3");
 
-
 const nextYear = document.createElement("button");
-
 nextYear.textContent = "›";
 
-
-yearNavigation.appendChild(previousYear);
-
-yearNavigation.appendChild(yearTitle);
-
-yearNavigation.appendChild(nextYear);
+yearNavigation.append(
+    previousYear,
+    yearTitle,
+    nextYear
+);
 
 calendar.appendChild(yearNavigation);
 
 
 // ================================
-// أزرار الشهر
+// إنشاء أزرار الشهر
 // ================================
 
 const monthNavigation = document.createElement("div");
 
-monthNavigation.classList.add("month-navigation");
-
+monthNavigation.className = "month-navigation";
 
 const previousMonth = document.createElement("button");
-
 previousMonth.textContent = "‹";
-
 
 const monthTitle = document.createElement("h3");
 
-
 const nextMonth = document.createElement("button");
-
 nextMonth.textContent = "›";
 
-
-monthNavigation.appendChild(previousMonth);
-
-monthNavigation.appendChild(monthTitle);
-
-monthNavigation.appendChild(nextMonth);
+monthNavigation.append(
+    previousMonth,
+    monthTitle,
+    nextMonth
+);
 
 calendar.appendChild(monthNavigation);
 
 
+// ================================
 // مكان الأيام
+// ================================
 
 const monthContainer = document.createElement("div");
 
@@ -338,35 +431,31 @@ function createCalendar() {
 
     monthContainer.innerHTML = "";
 
-
     yearTitle.textContent = displayedYear;
 
     monthTitle.textContent = months[displayedMonth];
 
 
-    // أسماء أيام الأسبوع
-
+    // أسماء الأيام
     const week = document.createElement("div");
 
-    week.classList.add("week");
+    week.className = "week";
 
+    days.forEach(function(dayName) {
 
-    for (let day = 0; day < 7; day++) {
+        const dayNameElement =
+            document.createElement("span");
 
-        const dayName = document.createElement("span");
+        dayNameElement.textContent = dayName;
 
-        dayName.textContent = days[day];
+        week.appendChild(dayNameElement);
 
-        week.appendChild(dayName);
-
-    }
-
+    });
 
     monthContainer.appendChild(week);
 
 
     // عدد أيام الشهر
-
     const numberOfDays =
         new Date(
             displayedYear,
@@ -375,8 +464,7 @@ function createCalendar() {
         ).getDate();
 
 
-    // اليوم الذي يبدأ فيه الشهر
-
+    // أول يوم في الشهر
     const firstDay =
         new Date(
             displayedYear,
@@ -385,39 +473,70 @@ function createCalendar() {
         ).getDay();
 
 
-    const daysContainer = document.createElement("div");
+    const daysContainer =
+        document.createElement("div");
 
-    daysContainer.classList.add("days");
+    daysContainer.className = "days";
 
 
-    // الفراغات قبل اليوم الأول
-
+    // الفراغات
     for (let i = 0; i < firstDay; i++) {
 
-        const emptyDay = document.createElement("span");
+        const emptyDay =
+            document.createElement("span");
 
         daysContainer.appendChild(emptyDay);
 
     }
 
 
-    // إنشاء الأيام
+    // تاريخ اليوم
+    const today = new Date();
 
+    const currentDay = today.getDate();
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+
+
+    // أرقام الأيام
     for (let day = 1; day <= numberOfDays; day++) {
 
-        const dayNumber = document.createElement("span");
+        const dayElement =
+            document.createElement("span");
 
-        dayNumber.textContent = day;
+        dayElement.className = "day";
 
-        dayNumber.classList.add("day");
+        dayElement.textContent = day;
 
 
-        daysContainer.appendChild(dayNumber);
+        // ⭐ إجبار الرقم على الظهور
+        dayElement.style.display = "flex";
+        dayElement.style.visibility = "visible";
+        dayElement.style.opacity = "1";
+        dayElement.style.color = "#d10795";
+        dayElement.style.alignItems = "center";
+        dayElement.style.justifyContent = "center";
+
+
+        // ❤️ اليوم الحالي
+        if (
+            day === currentDay &&
+            displayedMonth === currentMonth &&
+            displayedYear === currentYear
+        ) {
+
+            dayElement.classList.add("today");
+
+        }
+
+
+        daysContainer.appendChild(dayElement);
 
     }
 
 
     monthContainer.appendChild(daysContainer);
+
 }
 
 
@@ -425,7 +544,7 @@ function createCalendar() {
 // تغيير السنة
 // ================================
 
-previousYear.addEventListener("click", function () {
+previousYear.addEventListener("click", function() {
 
     displayedYear--;
 
@@ -434,7 +553,7 @@ previousYear.addEventListener("click", function () {
 });
 
 
-nextYear.addEventListener("click", function () {
+nextYear.addEventListener("click", function() {
 
     displayedYear++;
 
@@ -447,44 +566,193 @@ nextYear.addEventListener("click", function () {
 // تغيير الشهر
 // ================================
 
-previousMonth.addEventListener("click", function () {
+previousMonth.addEventListener("click", function() {
 
     displayedMonth--;
-
 
     if (displayedMonth < 0) {
 
         displayedMonth = 11;
-
         displayedYear--;
 
     }
 
-
     createCalendar();
 
 });
 
 
-nextMonth.addEventListener("click", function () {
+nextMonth.addEventListener("click", function() {
 
     displayedMonth++;
-
 
     if (displayedMonth > 11) {
 
         displayedMonth = 0;
-
         displayedYear++;
 
     }
-
 
     createCalendar();
 
 });
 
 
-// إنشاء التقويم عند فتح الصفحة
+// ================================
+// تشغيل التقويم
+// ================================
 
 createCalendar();
+// ================================
+// الساعة الرقمية
+// ================================
+
+const clock = document.querySelector("#clock");
+const todayDate = document.querySelector("#today-date");
+
+
+function updateClock() {
+
+    const now = new Date();
+
+
+    const hours = String(now.getHours()).padStart(2, "0");
+
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+
+
+    clock.textContent =
+        `${hours}:${minutes}:${seconds}`;
+
+
+    const date = now.toLocaleDateString("ar-DZ", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
+
+
+    todayDate.textContent = date;
+
+}
+
+
+// تشغيل الساعة
+updateClock();
+
+setInterval(updateClock, 1000);
+// ================================
+// تذكير المواعيد
+// ================================
+
+const reminderTask =
+    document.querySelector("#task-name");
+
+const reminderTime =
+    document.querySelector("#task-time");
+
+const reminderButton =
+    document.querySelector("#set-reminder");
+
+const reminderMessage =
+    document.querySelector("#reminder-message");
+
+
+let reminder = null;
+
+
+// تعيين التذكير
+reminderButton.addEventListener("click", function () {
+
+    const taskName = reminderTask.value.trim();
+
+    const taskTime = reminderTime.value;
+
+
+    // التأكد من اسم المهمة
+    if (taskName === "") {
+
+        reminderMessage.textContent =
+            "🌷 اكتبي اسم المهمة أولًا";
+
+        return;
+
+    }
+
+
+    // التأكد من الوقت
+    if (taskTime === "") {
+
+        reminderMessage.textContent =
+            "⏰ اختاري وقت التذكير";
+
+        return;
+
+    }
+
+
+    // حفظ التذكير
+    reminder = {
+
+        task: taskName,
+
+        time: taskTime
+
+    };
+
+
+    reminderMessage.textContent =
+        `🔔 تم ضبط تذكير "${taskName}" على الساعة ${taskTime} 💗`;
+
+
+    // تنظيف الخانات
+    reminderTask.value = "";
+
+    reminderTime.value = "";
+
+});
+// ================================
+// فحص التذكير كل ثانية
+// ================================
+
+setInterval(function () {
+
+    if (!reminder) {
+        return;
+    }
+
+
+    const now = new Date();
+
+
+    const currentHours =
+        String(now.getHours()).padStart(2, "0");
+
+    const currentMinutes =
+        String(now.getMinutes()).padStart(2, "0");
+
+
+    const currentTime =
+        `${currentHours}:${currentMinutes}`;
+
+
+    if (currentTime === reminder.time) {
+
+        reminderMessage.textContent =
+            `🔔 حان وقت "${reminder.task}" 🌷💗`;
+
+
+        showMessage(
+            `🔔 حان وقت ${reminder.task}!`
+        );
+
+
+        // منع التكرار في نفس الدقيقة
+        reminder = null;
+
+    }
+
+}, 1000);
