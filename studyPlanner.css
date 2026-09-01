@@ -1525,6 +1525,57 @@ label {
     button {
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
+        
     }
 
+}
+    /* --- 1. إلغاء التمرير الأفقي وضبط الأحجام الأساسية --- */
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+html, body {
+    overflow-x: hidden; /* يمنع ظهور شريط التمرير الأفقي تماماً */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* --- 2. جعل الصور والفيديوهات والجداول متجاوبة --- */
+img, iframe, table, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- 3. تحسين التنسيق لشاشات الهواتف (Smartphones) --- */
+@media screen and (max-width: 768px) {
+    /* جعل الحاويات الرئيسية ترتب العناصر رأسياً بدلاً من أفقياً */
+    .container, .wrapper, .main-content, .flex-container, .grid-container {
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+        padding: 10px !important;
+        box-sizing: border-box;
+    }
+
+    /* تكبير الأزرار لتكون سهلة الضغط باللمس */
+    button, .btn, input[type="button"], input[type="submit"] {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px; /* يمنع التقريب التلقائي المزعج في آيفون */
+        margin: 5px 0;
+    }
+
+    /* ضبط الحقول والجداول لتتناسب مع الشاشة الصغيرة */
+    input, select, textarea {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto; /* يسمح بالتمرير داخل الجدول فقط إذا كان عريضاً دون تخريب الصفحة */
+        white-space: nowrap;
+    }
 }
