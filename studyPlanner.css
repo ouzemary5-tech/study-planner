@@ -1529,52 +1529,68 @@ label {
 
 }
     /* --- 1. إلغاء التمرير الأفقي وضبط الأحجام الأساسية --- */
-* {
-    box-sizing: border-box;
-    max-width: 100%;
+ /* ==========================================
+   كود التجاوب الشامل لجميع الأجهزة
+   ========================================== */
+
+/* 1. ضبط الأساسيات لجميع الشاشات وتجنب الخروج عن الحواف */
+*, *::before, *::after {
+    box-sizing: border-box !important;
 }
 
 html, body {
-    overflow-x: hidden; /* يمنع ظهور شريط التمرير الأفقي تماماً */
-    margin: 0;
-    padding: 0;
-    width: 100%;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* --- 2. جعل الصور والفيديوهات والجداول متجاوبة --- */
-img, iframe, table, video {
-    max-width: 100%;
-    height: auto;
-}
-
-/* --- 3. تحسين التنسيق لشاشات الهواتف (Smartphones) --- */
+/* 2. الشاشات الصغيرة (الهواتف: أقل من 768px) */
 @media screen and (max-width: 768px) {
-    /* جعل الحاويات الرئيسية ترتب العناصر رأسياً بدلاً من أفقياً */
-    .container, .wrapper, .main-content, .flex-container, .grid-container {
-        display: flex;
-        flex-direction: column;
+    /* جعل الحاويات والبطاقات تأخذ عرض الشاشة بالكامل وترتب العناصر أفقياً لترتيب رأسي */
+    div, section, main, article, container, header, footer {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* تحويل أي شبكة (Grid) أو صف أفقية (Flex) إلى عمود رأسي منظم */
+    [class*="grid"], [class*="flex"], [class*="row"], [class*="container"], [class*="card"] {
+        display: flex !important;
+        flex-direction: column !important;
         width: 100% !important;
-        padding: 10px !important;
-        box-sizing: border-box;
     }
 
-    /* تكبير الأزرار لتكون سهلة الضغط باللمس */
-    button, .btn, input[type="button"], input[type="submit"] {
-        width: 100%;
-        padding: 12px 15px;
-        font-size: 16px; /* يمنع التقريب التلقائي المزعج في آيفون */
-        margin: 5px 0;
+    /* ضبط الحقول والأزرار لتكون مريحة للضغط باليد */
+    input, select, textarea, button, .btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        font-size: 16px !important; /* يحسن القراءة ويعالج التقريب التلقائي */
+        box-sizing: border-box !important;
     }
 
-    /* ضبط الحقول والجداول لتتناسب مع الشاشة الصغيرة */
-    input, select, textarea {
-        width: 100%;
-        font-size: 16px;
+    /* جعل الصور والوسائط تتكيف تلقائياً دون تشويه */
+    img, svg, video, iframe {
+        max-width: 100% !important;
+        height: auto !important;
     }
 
+    /* تحسين عرض الجداول */
     table {
-        display: block;
-        overflow-x: auto; /* يسمح بالتمرير داخل الجدول فقط إذا كان عريضاً دون تخريب الصفحة */
-        white-space: nowrap;
+        display: block !important;
+        overflow-x: auto !important;
+        width: 100% !important;
     }
 }
+
+/* 3. الشاشات المتوسطة (التابلت: بين 769px و 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    body {
+        padding: 15px !important;
+    }
+    
+    img, table, video {
+        max-width: 100% !important;
+    }
+}
+    
