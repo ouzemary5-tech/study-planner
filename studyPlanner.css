@@ -1,5 +1,6 @@
 body{
 
+
     background-color: rgba(156, 4, 136, 0.61);
     background-size: auto;
     font-family: 'Times New Roman', Times, serif;
@@ -1524,522 +1525,288 @@ label {
     button {
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
-        
     }
 
 }
-    /* --- 1. إلغاء التمرير الأفقي وضبط الأحجام الأساسية --- */
- /* ==========================================
-   كود التجاوب الشامل لجميع الأجهزة
-   ========================================== */
+@media (max-width: 500px) {
 
-/* 1. ضبط الأساسيات لجميع الشاشات وتجنب الخروج عن الحواف */
-*, *::before, *::after {
-    box-sizing: border-box !important;
-}
-
-html, body {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* 2. الشاشات الصغيرة (الهواتف: أقل من 768px) */
-@media screen and (max-width: 768px) {
-    /* جعل الحاويات والبطاقات تأخذ عرض الشاشة بالكامل وترتب العناصر أفقياً لترتيب رأسي */
-    div, section, main, article, container, header, footer {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-
-    /* تحويل أي شبكة (Grid) أو صف أفقية (Flex) إلى عمود رأسي منظم */
-    [class*="grid"], [class*="flex"], [class*="row"], [class*="container"], [class*="card"] {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-
-    /* ضبط الحقول والأزرار لتكون مريحة للضغط باليد */
-    input, select, textarea, button, .btn {
-        width: 100% !important;
-        max-width: 100% !important;
-        font-size: 16px !important; /* يحسن القراءة ويعالج التقريب التلقائي */
-        box-sizing: border-box !important;
-    }
-
-    /* جعل الصور والوسائط تتكيف تلقائياً دون تشويه */
-    img, svg, video, iframe {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-
-    /* تحسين عرض الجداول */
-    table {
-        display: block !important;
-        overflow-x: auto !important;
-        width: 100% !important;
-    }
-}
-
-/* 3. الشاشات المتوسطة (التابلت: بين 769px و 1024px) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
     body {
-        padding: 15px !important;
+        padding: 15px;
     }
-    
-    img, table, video {
-        max-width: 100% !important;
+
+
+    .letter {
+
+        padding: 28px 20px;
+
+        border-radius: 25px;
+    }
+
+
+    .message {
+
+        padding: 20px 16px;
+    }
+
+
+    .message p {
+
+        font-size: 14px;
+
+        line-height: 1.7;
     }
 }
-    
+}
+
 /* =========================================
-   📱 RESPONSIVE FINAL FIX
-   آخر تعديل للبلانر
-========================================= */
+   RESPONSIVE — ALL DEVICES
+   ========================================= */
 
-* {
-    box-sizing: border-box;
-}
-
-html {
-    width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
+/* منع أي خروج أفقي */
+html,
 body {
     width: 100%;
     max-width: 100%;
-    margin: 0;
-    padding: 20px;
     overflow-x: hidden;
 }
 
-/* =========================================
-   💻 PLANNER DESKTOP
-========================================= */
-
-.planner-layout {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: 250px minmax(0, 1fr) 250px;
-
-    gap: 25px;
-    align-items: start;
+/* كل العناصر تحسب الـ padding والـ border داخل الحجم */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-.planner-layout > * {
-    min-width: 0;
-    max-width: 100%;
-}
-
-/* منع العناصر من الخروج */
-
-.calendar,
-.countdown,
-.planner-center,
-.add-task,
-#card {
-    min-width: 0;
-    max-width: 100%;
-}
-
-/* =========================================
-   📅 CALENDAR
-========================================= */
-
-.calendar {
-    width: 100%;
+/* الصور والفيديوهات لا تتجاوز الحاوية */
+img,
+video {
     max-width: 100%;
     height: auto;
-    min-height: 420px;
-
-    overflow: hidden;
 }
 
-#calendar-content {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-.week,
-.days {
-    width: 100%;
-    max-width: 100%;
-
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-
-    gap: 3px;
-}
-
-.week span,
-.day {
-    min-width: 0;
-    width: 100%;
-}
-
-.day {
-    font-size: clamp(10px, 1vw, 13px);
-    padding: 6px 2px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* =========================================
-   ⏳ COUNTDOWN
-========================================= */
-
-.countdown {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-}
-
-.countdown-inputs {
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-}
-
-.countdown-inputs input {
-    width: 55px;
-    max-width: 100%;
-}
-
-/* =========================================
-   📝 INPUTS
-========================================= */
-
-.inputs {
-    max-width: 100%;
-}
-
-.inputs input {
-    max-width: 100%;
-}
-
-/* =========================================
-   📱 TABLET
-========================================= */
-
-@media (max-width: 900px) {
-
-    body {
-        padding: 15px;
-    }
-
-    .planner-layout {
-        grid-template-columns: 1fr 1fr;
-        gap: 18px;
-    }
-
-    .planner-center {
-        grid-column: 1 / -1;
-        grid-row: 1;
-    }
-
-    .calendar {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .countdown {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    .inputs {
-        width: 100%;
-
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        gap: 10px;
-    }
-
-    .inputs > * {
-        min-width: 0;
-    }
-
-}
-
-/* =========================================
-   📱 PHONE
-========================================= */
-
-@media (max-width: 600px) {
-
-    body {
-        padding: 10px;
-    }
-
-    .planner-layout {
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-
-        gap: 18px;
-    }
-
-    .planner-center,
-    .calendar,
-    .countdown {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .planner-center {
-        order: 1;
-    }
-
-    .calendar {
-        order: 2;
-        min-height: auto;
-    }
-
-    .countdown {
-        order: 3;
-    }
-
-    /* =========================
-       العنوان
-    ========================= */
-
-    #hello {
-        font-size: clamp(20px, 7vw, 30px);
-        line-height: 1.4;
-    }
-
-    p {
-        font-size: clamp(14px, 4vw, 18px);
-    }
-
-    /* =========================
-       خانات إضافة المهمة
-    ========================= */
-
-    .inputs {
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-
-        gap: 10px;
-    }
-
-    .inputs > * {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .inputs input {
-        width: 100%;
-    }
-
-    /* =========================
-       التذكير
-    ========================= */
-
-    .task-reminder {
-        width: 100%;
-        max-width: 100%;
-
-        padding: 15px;
-    }
-
-    .task-reminder input,
-    .task-reminder button {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* =========================
-       بطاقات المهام
-    ========================= */
-
-    #card {
-        width: 100%;
-        max-width: 100%;
-
-        overflow-wrap: anywhere;
-        word-break: break-word;
-    }
-
-    .task-card {
-        width: 100%;
-        max-width: 100%;
-
-        overflow-wrap: anywhere;
-        word-break: break-word;
-    }
-
-    /* =========================
-       التقويم
-    ========================= */
-
-    .calendar {
-        overflow: hidden;
-    }
-
-    #calendar-content {
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .week,
-    .days {
-        width: 100%;
-        min-width: 0;
-
-        grid-template-columns:
-            repeat(7, minmax(0, 1fr));
-
-        gap: 2px;
-    }
-
-    .week span {
-        font-size: 9px;
-    }
-
-    .day {
-        width: 100%;
-        min-width: 0;
-
-        padding: 7px 1px;
-
-        font-size: 11px;
-    }
-
-    /* =========================
-       اليوم الحالي
-    ========================= */
-
-    .days .day.today {
-        min-width: 0;
-    }
-
-    /* =========================
-       العداد
-    ========================= */
-
-    .countdown {
-        padding: 15px;
-    }
-
-    .countdown-inputs {
-        width: 100%;
-
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-
-        gap: 7px;
-    }
-
-    .countdown-inputs input {
-        width: 100%;
-        min-width: 0;
-    }
-
-    /* =========================
-       الساعة
-    ========================= */
-
-    #clock {
-        font-size: clamp(26px, 10vw, 42px);
-    }
-
-    #today-date {
-        font-size: 13px;
-    }
-
-    /* =========================
-       الأزرار
-    ========================= */
-
-    button {
-        min-height: 42px;
-    }
-
-}
-
-/* =========================================
-   📱 PHONE SMALL
-========================================= */
-
-@media (max-width: 380px) {
-
-    body {
-        padding: 8px;
-    }
-
-    .planner-layout {
-        gap: 14px;
-    }
-
-    .calendar,
-    .countdown {
-        padding: 12px;
-    }
-
-    .week,
-    .days {
-        gap: 1px;
-    }
-
-    .week span {
-        font-size: 8px;
-    }
-
-    .day {
-        font-size: 10px;
-        padding: 6px 0;
-    }
-
-    .countdown-inputs {
-        grid-template-columns: 1fr;
-    }
-
-    #hello {
-        font-size: 20px;
-    }
-
-}
-
-/* =========================================
-   🚫 منع الـ horizontal scroll
-========================================= */
-
-img,
-video,
-iframe,
-table {
-    max-width: 100%;
-}
-
+/* النصوص الطويلة لا تكسر الصفحة */
 h1,
 h2,
 h3,
 p,
 span,
-label,
-button,
-input {
-    max-width: 100%;
+a,
+button {
+    overflow-wrap: break-word;
 }
 
-button,
-input {
-    box-sizing: border-box;
+/* =========================================
+   DESKTOP
+   ========================================= */
+
+.main-container,
+.planner-container,
+.card-container,
+.pages-container {
+    width: min(1200px, 92%);
+    margin-inline: auto;
 }
+
+/* العناصر الرئيسية */
+.main-content,
+.planner-content,
+.card-content {
+    display: grid;
+    gap: 25px;
+    width: 100%;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .main-content,
+    .planner-content,
+    .card-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .container,
+    .main-container,
+    .planner-container,
+    .card-container {
+        width: 94%;
+    }
+
+    button,
+    .btn {
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* كل العناصر الرئيسية تحت بعضها */
+    .main-content,
+    .planner-content,
+    .card-content,
+    .pages-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* الحاويات */
+    .container,
+    .main-container,
+    .planner-container,
+    .card-container {
+        width: calc(100% - 24px);
+        max-width: 500px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* البطاقات */
+    .card,
+    .task-card,
+    .calendar,
+    .timer,
+    .message,
+    .image-container,
+    .birthday-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* منع العناصر من التمدد خارج الشاشة */
+    .card *,
+    .task-card *,
+    .calendar *,
+    .timer *,
+    .message *,
+    .birthday-card * {
+        max-width: 100%;
+    }
+
+    /* الصور */
+    img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* الأزرار */
+    button,
+    .btn,
+    .next-btn,
+    .back-btn {
+        width: min(100%, 320px);
+        min-height: 45px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* المدخلات */
+    input,
+    textarea,
+    select {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    /* أي Flex كان أفقي */
+    .row,
+    .buttons,
+    .button-group,
+    .actions,
+    .controls {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+    }
+
+    /* إلغاء الـ hover transformations على الهاتف */
+    button:hover,
+    .btn:hover,
+    .next-btn:hover,
+    .back-btn:hover,
+    .card:hover,
+    .task-card:hover,
+    img:hover {
+        transform: none;
+    }
+
+    /* منع العناصر المطلقة من تخريب الترتيب */
+    .floating,
+    .absolute-item {
+        position: static;
+    }
+
+    /* المسافات */
+    section {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .container,
+    .main-container,
+    .planner-container,
+    .card-container {
+        width: calc(100% - 18px);
+    }
+
+    h1 {
+        font-size: clamp(1.5rem, 8vw, 2.2rem);
+    }
+
+    h2 {
+        font-size: clamp(1.25rem, 6vw, 1.8rem);
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+
+    button,
+    .btn {
+        width: 100%;
+    }
+}
+
