@@ -1594,3 +1594,452 @@ html, body {
     }
 }
     
+/* =========================================
+   📱 RESPONSIVE FINAL FIX
+   آخر تعديل للبلانر
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   💻 PLANNER DESKTOP
+========================================= */
+
+.planner-layout {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr) 250px;
+
+    gap: 25px;
+    align-items: start;
+}
+
+.planner-layout > * {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* منع العناصر من الخروج */
+
+.calendar,
+.countdown,
+.planner-center,
+.add-task,
+#card {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* =========================================
+   📅 CALENDAR
+========================================= */
+
+.calendar {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 420px;
+
+    overflow: hidden;
+}
+
+#calendar-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.week,
+.days {
+    width: 100%;
+    max-width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+
+    gap: 3px;
+}
+
+.week span,
+.day {
+    min-width: 0;
+    width: 100%;
+}
+
+.day {
+    font-size: clamp(10px, 1vw, 13px);
+    padding: 6px 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================
+   ⏳ COUNTDOWN
+========================================= */
+
+.countdown {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.countdown-inputs {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.countdown-inputs input {
+    width: 55px;
+    max-width: 100%;
+}
+
+/* =========================================
+   📝 INPUTS
+========================================= */
+
+.inputs {
+    max-width: 100%;
+}
+
+.inputs input {
+    max-width: 100%;
+}
+
+/* =========================================
+   📱 TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .planner-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .planner-center {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .calendar {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .countdown {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .inputs {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+    .inputs > * {
+        min-width: 0;
+    }
+
+}
+
+/* =========================================
+   📱 PHONE
+========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .planner-layout {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .planner-center,
+    .calendar,
+    .countdown {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .planner-center {
+        order: 1;
+    }
+
+    .calendar {
+        order: 2;
+        min-height: auto;
+    }
+
+    .countdown {
+        order: 3;
+    }
+
+    /* =========================
+       العنوان
+    ========================= */
+
+    #hello {
+        font-size: clamp(20px, 7vw, 30px);
+        line-height: 1.4;
+    }
+
+    p {
+        font-size: clamp(14px, 4vw, 18px);
+    }
+
+    /* =========================
+       خانات إضافة المهمة
+    ========================= */
+
+    .inputs {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .inputs > * {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .inputs input {
+        width: 100%;
+    }
+
+    /* =========================
+       التذكير
+    ========================= */
+
+    .task-reminder {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 15px;
+    }
+
+    .task-reminder input,
+    .task-reminder button {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* =========================
+       بطاقات المهام
+    ========================= */
+
+    #card {
+        width: 100%;
+        max-width: 100%;
+
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .task-card {
+        width: 100%;
+        max-width: 100%;
+
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    /* =========================
+       التقويم
+    ========================= */
+
+    .calendar {
+        overflow: hidden;
+    }
+
+    #calendar-content {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .week,
+    .days {
+        width: 100%;
+        min-width: 0;
+
+        grid-template-columns:
+            repeat(7, minmax(0, 1fr));
+
+        gap: 2px;
+    }
+
+    .week span {
+        font-size: 9px;
+    }
+
+    .day {
+        width: 100%;
+        min-width: 0;
+
+        padding: 7px 1px;
+
+        font-size: 11px;
+    }
+
+    /* =========================
+       اليوم الحالي
+    ========================= */
+
+    .days .day.today {
+        min-width: 0;
+    }
+
+    /* =========================
+       العداد
+    ========================= */
+
+    .countdown {
+        padding: 15px;
+    }
+
+    .countdown-inputs {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 7px;
+    }
+
+    .countdown-inputs input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* =========================
+       الساعة
+    ========================= */
+
+    #clock {
+        font-size: clamp(26px, 10vw, 42px);
+    }
+
+    #today-date {
+        font-size: 13px;
+    }
+
+    /* =========================
+       الأزرار
+    ========================= */
+
+    button {
+        min-height: 42px;
+    }
+
+}
+
+/* =========================================
+   📱 PHONE SMALL
+========================================= */
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .planner-layout {
+        gap: 14px;
+    }
+
+    .calendar,
+    .countdown {
+        padding: 12px;
+    }
+
+    .week,
+    .days {
+        gap: 1px;
+    }
+
+    .week span {
+        font-size: 8px;
+    }
+
+    .day {
+        font-size: 10px;
+        padding: 6px 0;
+    }
+
+    .countdown-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    #hello {
+        font-size: 20px;
+    }
+
+}
+
+/* =========================================
+   🚫 منع الـ horizontal scroll
+========================================= */
+
+img,
+video,
+iframe,
+table {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+label,
+button,
+input {
+    max-width: 100%;
+}
+
+button,
+input {
+    box-sizing: border-box;
+}
